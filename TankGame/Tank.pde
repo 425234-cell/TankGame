@@ -1,6 +1,7 @@
 class Tank{
   int x,y,w,h,speed,health;
-  PImage t1;
+  PImage tankW,tankA,tankS,tankD;
+  char idir;
   
   //Constructor
   Tank() {
@@ -10,16 +11,35 @@ class Tank{
     h = 100;
     speed = 2;
     health = 100;
-    t1 = loadImage("hijjawi_tank.png");
+    tankW = loadImage("tankW.png");
+    tankA = loadImage("tankA.png");
+    tankS = loadImage("tankS.png");
+    tankD = loadImage("tankD.png");
+    idir = 'w';
   }
   
   void display() {
     imageMode(CENTER);
-    image(t1,x,y);
+    if(idir == 'w') {
+      image(tankW,x,y);
+    } else if(idir == 'a') {
+      image(tankA,x,y);
+    } else if(idir == 's') {
+      image(tankS,x,y);
+    } else if(idir == 'd') {
+      image(tankD,x,y);
+    }
   }  
-  
-  void move() {
-    x = x + speed;
+    
+  void move(char dir) {
+    if(dir == 'w') {
+      y = y-speed;
+    } else if(dir == 'a') {
+      x = x-speed;
+    } else if(dir == 's') {
+      y = y+speed;
+    } else if(dir == 'd') {
+      x = x+speed;
+    }
   }
-
 }
